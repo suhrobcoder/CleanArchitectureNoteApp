@@ -19,6 +19,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -111,6 +113,9 @@ fun AddEditNoteScreen(
                                     )
                                 }
                                 viewModel.onEvent(AddEditNoteEvent.ChangeColor(colorInt))
+                            }
+                            .semantics {
+                                testTag = TestTags.COLOR_BUTTON
                             }
                     )
                 }

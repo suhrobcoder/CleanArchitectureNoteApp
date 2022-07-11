@@ -6,4 +6,5 @@ object TestTags {
     const val TITLE_TEXT_FIELD = "TITLE_TEXT_FIELD"
     const val CONTENT_TEXT_FIELD = "CONTENT_TEXT_FIELD"
     const val NOTE_ITEM = "NOTE_ITEM"
+    const val COLOR_BUTTON = "COLOR_BUTTON"
 }
