@@ -146,6 +146,32 @@ class NotesEndToEndTest {
     }
 
     @Test
+    fun addingNoteWithEmptyTitle_showsErrorInSnackBar() {
+        composeRule.onNodeWithContentDescription("Add").performClick()
+        composeRule
+            .onNodeWithTag(TestTags.TITLE_TEXT_FIELD)
+            .performTextInput("")
+        composeRule
+            .onNodeWithTag(TestTags.CONTENT_TEXT_FIELD)
+            .performTextInput("test-content")
+        composeRule.onNodeWithContentDescription("Save").performClick()
+        composeRule.onNodeWithText("The title of the note can't be empty.").assertIsDisplayed()
+    }
+
+    @Test
+    fun addingNoteWithEmptyContent_showsErrorInSnackBar() {
+        composeRule.onNodeWithContentDescription("Add").performClick()
+        composeRule
+            .onNodeWithTag(TestTags.TITLE_TEXT_FIELD)
+            .performTextInput("test-title")
+        composeRule
+            .onNodeWithTag(TestTags.CONTENT_TEXT_FIELD)
+            .performTextInput("")
+        composeRule.onNodeWithContentDescription("Save").performClick()
+        composeRule.onNodeWithText("The content of the note can't be empty.").assertIsDisplayed()
+    }
+
+    @Test
     fun saveNewNotes_orderByTitleDescending() {
         for(i in 1..3) {
             // Click on FAB to get to add note screen
